@@ -475,8 +475,6 @@ function App() {
                   <input
                     name="age"
                     type="number"
-                    min="17"
-                    max="99"
                     value={form.age}
                     onChange={handleFormChange}
                     placeholder="예: 19"

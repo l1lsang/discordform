@@ -210,7 +210,8 @@ function App() {
           return nextDrafts
         })
       },
-      () => {
+      (error) => {
+        console.error('Failed to load counselor applications:', error)
         setDashboardError('지원서 목록을 불러오지 못했습니다.')
         setDashboardLoading(false)
       },
@@ -302,7 +303,8 @@ function App() {
         phase: 'success',
         message: '지원서가 정상적으로 접수되었습니다. 검토 후 디스코드로 안내드릴게요.',
       })
-    } catch {
+    } catch (error) {
+      console.error('Failed to submit counselor application:', error)
       setSubmitState({
         phase: 'error',
         message: '접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.',
@@ -354,7 +356,8 @@ function App() {
 
     try {
       await updateCounselorApplication(id, draft)
-    } catch {
+    } catch (error) {
+      console.error('Failed to update counselor application:', error)
       setDashboardError('상태 저장 중 문제가 발생했습니다. 다시 시도해주세요.')
     } finally {
       setSavingId(null)
